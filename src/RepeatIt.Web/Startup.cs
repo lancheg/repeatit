@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using RepeatIt.Domain.Services;
+using Core.Data.Ef;
+using Core.Domain;
 
 namespace RepeatIt.Web
 {
@@ -35,6 +38,8 @@ namespace RepeatIt.Web
         {
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
+            services.AddTransient<CardGenerator>();
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 
             services.AddMvc();
         }

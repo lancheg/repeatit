@@ -1,9 +1,9 @@
 ﻿namespace Core.Domain
 {
-    public interface IRepository<IEntity>
+    public interface IRepository<T> where T:IEntity
     {
-        IEntity Add(IEntity entity);
-        IEntity Get(int id);
+        T Add(T entity);
+        T Get(int id);
         void Delete(int id);
         void SaveChanges();
 

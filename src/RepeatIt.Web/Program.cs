@@ -17,7 +17,6 @@ namespace RepeatIt.Web
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
-
             host.Run();
         }
     }

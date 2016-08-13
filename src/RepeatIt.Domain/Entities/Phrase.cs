@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Core.Domain;
 
 namespace RepeatIt.Domain.Entities
 {
-    public class Phrase
+    public class Phrase:IEntity
     {
         public CultureInfo Culture { get; set; }
 

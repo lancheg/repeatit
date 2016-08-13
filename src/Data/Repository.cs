@@ -3,13 +3,13 @@ using Core.Domain;
 
 namespace Core.Data.Ef
 {
-    public class Repository<T>: IRepository<IEntity>
+    public class Repository<T>: IRepository<T> where T:IEntity
     {
         public Repository()
         {
         }
 
-        public IEntity Add(IEntity entity)
+        public T Add(T entity)
         {
             throw new NotImplementedException();
         }
@@ -19,7 +19,7 @@ namespace Core.Data.Ef
             throw new NotImplementedException();
         }
 
-        public IEntity Get(int id)
+        public T Get(int id)
         {
             throw new NotImplementedException();
         }
