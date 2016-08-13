@@ -19,5 +19,7 @@ namespace RepeatIt.Domain.Entities
         {
             return Translations.FirstOrDefault(x => x.Culture.Equals(culture));
         }
+
+        public int Id { get; set; }
     }
 }

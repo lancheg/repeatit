@@ -1,32 +1,38 @@
 ﻿using System;
+using System.Linq;
 using Core.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Core.Data.Ef
 {
-    public class Repository<T>: IRepository<T> where T:IEntity
+    public class Repository<TEntity>: IRepository<TEntity> where TEntity : class, IEntity
     {
-        public Repository()
+        private readonly DbContext _context;
+
+        public Repository(DbContext context)
         {
+            _context = context;
+        }
+        
+
+        public TEntity Add(TEntity entity)
+        {
+            return _context.Set<TEntity>().Add(entity).Entity;
         }
 
-        public T Add(T entity)
+        public void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            _context.Set<TEntity>().Remove(entity);
         }
 
-        public void Delete(int id)
+        public TEntity Get(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public T Get(int id)
-        {
-            throw new NotImplementedException();
+            return _context.Set<TEntity>().Single(x => x.Id == id);
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }
